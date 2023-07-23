@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Users</title>
+</head>
+<body>
+
+<style>table {
+  border: 1px solid #69c;
+}
+th {
+  font-weight: normal;
+  color: #039;
+  padding: 10px;
+}
+td {
+  color: #669;
+  border-top: 1px dashed white;
+  padding: 10px;
+  background:#ccddff;
+}
+tr:hover td {
+  background: #99bcff;
+}</style>
+
+<br/>
+<br/>
+<table class="table_blur">
+  <tr>
+    <th colspan="5" text-align="center">Пользователи</th>
+  </tr>
+  <tr>
+    <th>ID</th>
+    <th>Имя</th>
+    <th>Фамилия</th>
+    <th>Возраст</th>
+    <th>     </th>
+  </tr>
+
+  <tr th:each="user : ${users}">
+    <td><a th:href="@{/users/{id}(id=${user.getId()})}" th:text="${user.getId()}">user</a></td>
+    <td><a th:href="@{/users/{id}(id=${user.getId()})}" th:text="${user.getName()}">user</a></td>
+    <td><a th:href="@{/users/{id}(id=${user.getId()})}" th:text="${user.getSurname()}">user</a></td>
+    <td><a th:href="@{/users/{id}(id=${user.getId()})}" th:text="${user.getAge()}">user</a></td>
+    <td><a th:href="@{/users/{id}/edit(id=${user.getId()})}">Изменить</a></td>
+  </tr>
+</table>
+
+<br/>
+<table>
+  </tr>
+  <td>
+    <form action="/users/new">
+      <button type="submit">Добавить нового пользователя</button>
+    </form>
+  </td>
+
+  <td>
+    <form action="/users">
+      <button type="submit">Показать всех пользователей</button>
+    </form>
+  </td>
+  </tr>
+</table>
+</body>
+</html>
